@@ -182,61 +182,15 @@ MODx.panel.ClicheAlbumsList = function(config) {
         ,tbar: [{
             xtype: 'button'
             ,text: _('cliche.btn_add_album')
-            ,iconCls:'icon-add'
+            ,iconCls: 'icon icon-plus-circle'
             ,id: 'create-album-btn'
             ,handler: this.loadWindow
             ,scope: this
-        }
-        /* Not active in first bêta - Wait for the first TV */
-        , '-', {
-        // , '<span class="customsearchfield desc">Viewing</span>' ,{
-            // text: 'Default'
-            // ,id: 'cliche-filter-album-type'
-            // ,param: 'type'
-            // ,activeItem: 0
-            // ,menu: {
-                // plain: true
-                // ,defaults: {
-                    // handler: this.onItemClick
-                    // ,scope: this
-                // }
-                // ,items: [{
-                    // text: 'Default'
-                    // ,filter: 'default'
-                // },{
-                    // text: 'Cliche Thumbnail TV'
-                    // ,filter: 'clichethumbnail'
-                // }]
-            // }
-        // }
-        // , '    ','Albums Sorted by : '
-        // ,{
-            // text: 'Creation date'
-            // ,id: 'cliche-filter-album'
-            // ,param: 'sortby'
-            // ,activeItem: 0
-            // ,menu: {
-                // plain: true
-                // ,defaults: {
-                    // handler: this.onSortByItemClick
-                    // ,scope: this
-                // }
-                // ,items: [{
-                    // text: 'Name'
-                    // ,filter: 'name'
-                // },{
-                    // text: 'Creation date'
-                    // ,filter: 'createdon'
-                // },{
-                    // text: 'Author'
-                    // ,filter: 'createdby'
-                // }]
-            // }
-        // },'-',{
+        },'-',{
             xtype: 'trigger'
             ,id: 'albums-searchfield'
             ,ctCls: 'customsearchfield'
-            ,emptyText: 'Search...'
+            ,emptyText: _('cliche.field_search')
             ,onTriggerClick: function(){
                 this.reset();    
                 this.fireEvent('click');                

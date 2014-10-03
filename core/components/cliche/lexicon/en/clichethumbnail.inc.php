@@ -66,7 +66,7 @@ $_lang['clichethumbnail.image_cover_alt_msg'] = '{name} preview';
 $_lang['clichethumbnail.image_created_by'] = 'Created by';
 $_lang['clichethumbnail.image_created_on'] = 'Created on';
 $_lang['clichethumbnail.image_desc_title'] = 'Description';
-$_lang['clichethumbnail.image_informations_title'] = 'Informations';
+$_lang['clichethumbnail.image_information_title'] = 'Information';
 $_lang['cliche.image_unselected_msg'] = '<div class="empty-msg">Select an image from the main column to see its description</div>';
 $_lang['clichethumbnail.image_no_desc'] = '<em>No description</em>';
 $_lang['clichethumbnail.image_no_preview'] = 'No preview';

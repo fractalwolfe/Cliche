@@ -19,7 +19,7 @@ MODx.panel.ClicheUploadPanel = function(config) {
             xtype: 'button'
             ,text: _('cliche.btn_back_to_album')
             ,id: 'cliche-uploader-back-to-album-btn-'+config.uid
-            ,iconCls:'icon-back'
+            ,iconCls:'icon icon-chevron-circle-left'
             ,handler: function(){
                 Ext.getCmp('cliche-album-'+config.uid).activate(this.album);
             }
@@ -28,12 +28,12 @@ MODx.panel.ClicheUploadPanel = function(config) {
             xtype: 'button'
             ,text: _('cliche.btn_browse')
             ,id: 'cliche-uploader-browse-btn-'+config.uid
-            ,iconCls:'icon-add'
+            ,iconCls:'icon icon-plus-circle'
         },'-',{
             xtype: 'button'
             ,text: _('cliche.btn_start_upload')
             ,id: 'cliche-uploader-start-upload-btn-'+config.uid
-            ,iconCls:'icon-add-white'
+            ,iconCls:'icon icon-upload'
             ,handler: this.onStartUpload
             ,cls: 'green'
             ,scope: this
@@ -57,7 +57,7 @@ Ext.extend(MODx.panel.ClicheUploadPanel,MODx.Panel,{
             ,startingMarkup: '<tpl for="."><div class="empty-msg">{text}</div></tpl>'
             ,markup: this._uploadListTpl()
             //Override defaut updateDetail method implementation for adding callback
-            ,updateDetail: function(data) {    
+            ,updateDetail: function(data) {
                 this.body.hide();
                 this.tpl.overwrite(this.body, data);
                 this.body.slideIn('r', {stopFx:true, duration:.2});
@@ -109,15 +109,15 @@ Ext.extend(MODx.panel.ClicheUploadPanel,MODx.Panel,{
         var extras = Ext.urlEncode(params);
         var connector = MODx.ClicheConnectorUrl + '?' + extras;
         
-        
-
         this.uploader = new plupload.Uploader({
             url: connector
-            ,runtimes: 'html5'
+            ,runtimes: 'html5,flash,silverlight,html4'
             ,browse_button: Ext.getCmp('cliche-uploader-browse-btn-'+this.uid).getEl().dom.id
             ,container: this.id
             ,drop_element: 'cliche-uploader-upload-list-'+this.uid
             ,multipart: false
+            ,flash_swf_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/flash/Moxie.cdn.swf'
+            ,silverlight_xap_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/silverlight/Moxie.cdn.xap'
         });
         
         var uploaderEvents = ['FilesAdded', 'FileUploaded', 'QueueChanged', 'UploadFile', 'UploadProgress', 'UploadComplete' ];
@@ -129,7 +129,7 @@ Ext.extend(MODx.panel.ClicheUploadPanel,MODx.Panel,{
     }
     
     ,activate: function(rec){
-        Ext.getCmp('cliche-uploader-start-upload-btn-'+this.uid).disable();        
+        Ext.getCmp('cliche-uploader-start-upload-btn-'+this.uid).disable();
         this.album = rec;
         Ext.getCmp('card-container').getLayout().setActiveItem(this.id);
         this.updateBreadcrumbs(_('cliche.upload_items_for') + this.album.name +'</strong></p>');
@@ -165,7 +165,7 @@ Ext.extend(MODx.panel.ClicheUploadPanel,MODx.Panel,{
     ,removeFile: function(id){
         this.updateList = true;
         var f = this.uploader.getFile(id);
-        this.uploader.removeFile(f);        
+        this.uploader.removeFile(f);
     }
         
     ,onQueueChanged: function(up){
@@ -234,15 +234,15 @@ Ext.extend(MODx.panel.ClicheUploadPanel,MODx.Panel,{
             if (!Cliche.allowedExtensions[ext]) {
                 var del = pnl.addItemErrorMessage(file.id, _('cliche.invalid_extensions_error') + Cliche.config['allowed_extension']);
                 pnl.updateList = false;
-                if(del){                        
+                if(del){
                     toRemove.push(file);
-                }                
+                }
             }
             // Is the file too large 
             if (file.size > maxSize && !del){
                 var del = pnl.addItemErrorMessage(file.id, _('cliche.file_too_large_error'));
                 pnl.updateList = false;
-                if(del){                        
+                if(del){
                     toRemove.push(file);
                 }
             }
@@ -261,8 +261,8 @@ Ext.extend(MODx.panel.ClicheUploadPanel,MODx.Panel,{
         var descTpl = this.errorTpl.apply(desc);
         var content = Ext.select('.upload-list li#' + id + ' .upload-content');
         content.createChild(descTpl);
-        var item = Ext.select('.upload-list li#' + id);        
-        item.removeClass('active').addClass('upload-fail');            
+        var item = Ext.select('.upload-list li#' + id);
+        item.removeClass('active').addClass('upload-fail');
         return true;
     }
     
@@ -271,9 +271,9 @@ Ext.extend(MODx.panel.ClicheUploadPanel,MODx.Panel,{
         var descTpl = this.successTpl.apply(desc);
         var content = Ext.select('.upload-list li#' + id + ' .upload-content');
         content.createChild(descTpl);
-        var item = Ext.select('.upload-list li#' + id);        
+        var item = Ext.select('.upload-list li#' + id);
         item.setWidth(this.containerWidth);
-        item.removeClass('active').addClass('upload-success');            
+        item.removeClass('active').addClass('upload-success');
         return true;    
     }
     

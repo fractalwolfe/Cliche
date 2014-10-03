@@ -23,6 +23,7 @@ MODx.panel.cliche = function(config) {
         },{
             xtype: 'panel'
             ,id: 'main-panel'
+            ,cls: 'shadowbox'
             ,items:[{
                 xtype: 'modx-breadcrumbs-panel'
                 ,id: 'cliche-breadcrumbs'
@@ -49,12 +50,12 @@ MODx.panel.cliche = function(config) {
                     ,pnl: 'album-list' 
                 }
             },{
-                layout:'card'
-                ,id:'card-container'
-                ,activeItem:0
-                ,border: false    
-                ,autoHeight: true            
-                ,defaults:{
+                layout: 'card'
+                ,id: 'card-container'
+                ,activeItem: 0
+                ,border: false
+                ,autoHeight: true
+                ,defaults: {
                     preventRender: true
                     ,autoHeight: true
                 }

@@ -55,7 +55,7 @@ MODx.window.ClicheImageEditWindow = function(config) {
         },{
             text: _('cliche.btn_save_image')
             ,id: 'edit-image-window-btn-'+config.uid
-            ,cls: 'green'
+            ,cls: 'primary-button'
             ,handler: this.save
             ,scope: this
         }]
@@ -161,7 +161,7 @@ MODx.window.ClicheAlbumEditWindow = function(config) {
         },{
             text: _('cliche.btn_save_album')
             ,id: 'create-album-window-btn-'+config.uid
-            ,cls: 'green'
+            ,cls: 'primary-button'
             ,handler: this.save
             ,scope: this
         }]
