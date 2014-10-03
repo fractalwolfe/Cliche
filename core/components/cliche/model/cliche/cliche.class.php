@@ -54,9 +54,9 @@ class Cliche {
     function __construct(modX &$modx, array $config = array()) {
         $this->modx =& $modx;
 
-        $corePath = $this->modx->getOption('core_path').'components/cliche/';
-        $assetsUrl = $this->modx->getOption('assets_url').'components/cliche/';
-        $assetsPath = $this->modx->getOption('assets_path').'components/cliche/';
+        $corePath = $this->modx->getOption('cliche.core_path',$config,$this->modx->getOption('core_path').'components/cliche/');
+        $assetsUrl = $this->modx->getOption('cliche.assets_url',$config,$this->modx->getOption('assets_url').'components/cliche/');
+        $assetsPath = $this->modx->getOption('cliche.assets_path',$config,$this->modx->getOption('assets_path').'components/cliche/');
 
         $this->config = array_merge(array(
             'core_path' => $corePath,

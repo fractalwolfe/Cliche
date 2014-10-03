@@ -4,7 +4,7 @@ $basePath = dirname(dirname(dirname(dirname(__FILE__))));
 require_once $basePath . '/config.core.php';
 require_once MODX_CORE_PATH . 'config/' . MODX_CONFIG_KEY . '.inc.php';
 require_once MODX_CONNECTORS_PATH . 'index.php';
-$modx->getService('cliche','Cliche',$modx->getOption( 'core_path' ) . 'components/cliche/model/cliche/');
+$modx->getService('cliche','Cliche',$modx->getOption('cliche.core_path',null,$modx->getOption('core_path').'components/cliche/') . 'model/cliche/');
 
 if ($_REQUEST['action'] == 'web/phpthumb') {
     $version = $modx->getVersionData();
@@ -24,6 +24,6 @@ if ($_REQUEST['action'] == 'web/phpthumb') {
 $ctx = (!$_REQUEST['ctx']) ? '' : $modx->context->get('key');
 
 $modx->request->handleRequest(array(
-    'processors_path'   => $modx->getOption( 'core_path' ) . 'components/cliche/processors/',
+    'processors_path'   => $modx->getOption('cliche.core_path',null,$modx->getOption('core_path').'components/cliche/') . 'processors/',
     'location' => $ctx,
 ));
