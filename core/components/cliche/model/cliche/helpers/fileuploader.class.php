@@ -57,9 +57,9 @@ class FileUploader extends Import {
         
         /* Check if the POST php directive is lower than cliche's setting for size limit */
         if ($postSize < $this->config['sizeLimit']){
-            $msg = $this->modx->lexicon('cliche.upload_max_filesize', array(
+            $msg = $this->modx->lexicon('cliche.increase_post_max_size', array(
                 'size' => $this->config['sizeLimit'],
-                'directive' => $uploadMaxSize,
+                'directive' => $postSize,
             ));
             $response = $this->_response( $msg );
             die($response);
