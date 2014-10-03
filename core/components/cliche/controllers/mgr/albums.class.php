@@ -18,7 +18,13 @@ class ClicheMgrAlbumsManagerController extends ClicheManagerController {
         if($theme == 'trendy'){
             $this->addCss($this->cliche->config['css_url'].'trendy.css');
         } else {
-            $this->addCss($this->cliche->config['css_url'].'index.css');
+            // Load version dependent styling
+            $v = $this->modx->getVersionData();
+            if (version_compare($v['full_version'],'2.3.0-pl') === -1) {
+                $this->addCss($this->cliche->config['css_url'].'index22.css');
+            } else {
+                $this->addCss($this->cliche->config['css_url'].'index.css');
+            }
         }
         
         $this->addJavascript($this->cliche->config['assets_url'].'mgr/libs/plupload.full.min.js');
