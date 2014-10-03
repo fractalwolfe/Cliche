@@ -20,8 +20,8 @@ class ClicheMgrAlbumsManagerController extends ClicheManagerController {
         } else {
             $this->addCss($this->cliche->config['css_url'].'index.css');
         }
-        $this->addJavascript($this->cliche->config['assets_url'].'mgr/libs/plupload.js');
-        $this->addJavascript($this->cliche->config['assets_url'].'mgr/libs/plupload.html5.js');
+        
+        $this->addJavascript($this->cliche->config['assets_url'].'mgr/libs/plupload.full.min.js');
         $this->addJavascript($this->cliche->config['assets_url'].'mgr/core/windows.js');
         $this->addJavascript($this->cliche->config['assets_url'].'mgr/core/albums.js');
         $this->addJavascript($this->cliche->config['assets_url'].'mgr/core/album.js');
